@@ -58,6 +58,7 @@ const client = new ldap.Client('ldap://ldap.example.com', 'acme.com', cfg);
 - [GetADUserWithNeverExpiringPasswords](/templates/protocols/javascript/modules/ldap.Client#getaduserwithneverexpiringpasswords)
 - [GetADUserWithPasswordNotRequired](/templates/protocols/javascript/modules/ldap.Client#getaduserwithpasswordnotrequired)
 - [GetADUsers](/templates/protocols/javascript/modules/ldap.Client#getadusers)
+- [GetVersion](/templates/protocols/javascript/modules/ldap.Client#getversion)
 - [Search](/templates/protocols/javascript/modules/ldap.Client#search)
 
 ## Constructors
@@ -270,7 +271,7 @@ client.Close();
 
 #### Defined in
 
-ldap.ts:475
+ldap.ts:490
 
 ___
 
@@ -613,6 +614,31 @@ log(to_json(users));
 #### Defined in
 
 ldap.ts:228
+
+___
+
+### GetVersion
+
+▸ **GetVersion**(): `string`[]
+
+GetVersion returns the LDAP versions being used by the server
+
+#### Returns
+
+`string`[]
+
+**`Example`**
+
+```javascript
+const ldap = require('nuclei/ldap');
+const client = new ldap.Client('ldap://ldap.example.com', 'acme.com');
+const versions = client.GetVersion();
+log(versions);
+```
+
+#### Defined in
+
+ldap.ts:476
 
 ___
 

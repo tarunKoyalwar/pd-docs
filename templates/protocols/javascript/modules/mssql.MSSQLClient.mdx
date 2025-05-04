@@ -22,6 +22,7 @@ const client = new mssql.MSSQLClient;
 
 - [Connect](/templates/protocols/javascript/modules/mssql.MSSQLClient#connect)
 - [ConnectWithDB](/templates/protocols/javascript/modules/mssql.MSSQLClient#connectwithdb)
+- [ExecuteQuery](/templates/protocols/javascript/modules/mssql.MSSQLClient#executequery)
 - [IsMssql](/templates/protocols/javascript/modules/mssql.MSSQLClient#ismssql)
 
 ## Constructors
@@ -107,6 +108,40 @@ const connected = client.ConnectWithDB('acme.com', 1433, 'username', 'password',
 #### Defined in
 
 mssql.ts:46
+
+___
+
+### ExecuteQuery
+
+▸ **ExecuteQuery**(`host`, `port`, `username`): [`SQLResult`](/templates/protocols/javascript/modules/mssql.SQLResult)
+
+ExecuteQuery connects to MS SQL database using given credentials and executes a query.
+It returns the results of the query or an error if something goes wrong.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `host` | `string` |
+| `port` | `number` |
+| `username` | `string` |
+
+#### Returns
+
+[`SQLResult`](/templates/protocols/javascript/modules/mssql.SQLResult)
+
+**`Example`**
+
+```javascript
+const mssql = require('nuclei/mssql');
+const client = new mssql.MSSQLClient;
+const result = client.ExecuteQuery('acme.com', 1433, 'username', 'password', 'master', 'SELECT @@version');
+log(to_json(result));
+```
+
+#### Defined in
+
+mssql.ts:77
 
 ___
 
