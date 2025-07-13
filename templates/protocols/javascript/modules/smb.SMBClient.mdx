@@ -44,7 +44,7 @@ smb.ts:17
 
 ### ConnectSMBInfoMode
 
-▸ **ConnectSMBInfoMode**(`host`, `port`): [`SMBLog`](/templates/protocols/javascript/modules/smb.SMBLog)
+▸ **ConnectSMBInfoMode**(`ctx`, `host`, `port`): [`SMBLog`](/templates/protocols/javascript/modules/smb.SMBLog)
 
 ConnectSMBInfoMode tries to connect to provided host and port
 and discovery SMB information
@@ -55,6 +55,7 @@ state will be false
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 
@@ -79,7 +80,7 @@ ___
 
 ### DetectSMBGhost
 
-▸ **DetectSMBGhost**(`host`, `port`): `boolean`
+▸ **DetectSMBGhost**(`ctx`, `host`, `port`): `boolean`
 
 DetectSMBGhost tries to detect SMBGhost vulnerability
 by using SMBv3 compression feature.
@@ -89,6 +90,7 @@ If the host is vulnerable, it returns true.
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 
@@ -111,7 +113,7 @@ ___
 
 ### ListSMBv2Metadata
 
-▸ **ListSMBv2Metadata**(`host`, `port`): [`ServiceSMB`](/templates/protocols/javascript/modules/smb.ServiceSMB)
+▸ **ListSMBv2Metadata**(`ctx`, `host`, `port`): [`ServiceSMB`](/templates/protocols/javascript/modules/smb.ServiceSMB)
 
 ListSMBv2Metadata tries to connect to provided host and port
 and list SMBv2 metadata.
@@ -122,6 +124,7 @@ state will be false
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 
@@ -146,7 +149,7 @@ ___
 
 ### ListShares
 
-▸ **ListShares**(`host`, `port`, `user`): `string`[]
+▸ **ListShares**(`ctx`, `host`, `port`, `user`): `string`[]
 
 ListShares tries to connect to provided host and port
 and list shares by using given credentials.
@@ -157,6 +160,7 @@ can be used by providing empty password.
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 | `user` | `string` |

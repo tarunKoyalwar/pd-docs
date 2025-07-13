@@ -72,7 +72,7 @@ ___
 
 ### Connect
 
-▸ **Connect**(`host`, `port`, `username`): `boolean`
+▸ **Connect**(`ctx`, `host`, `port`, `username`): `boolean`
 
 Connect tries to connect to provided host and port
 with provided username and password with ssh.
@@ -83,6 +83,7 @@ state will be false
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 | `username` | `string` |
@@ -107,7 +108,7 @@ ___
 
 ### ConnectSSHInfoMode
 
-▸ **ConnectSSHInfoMode**(`host`, `port`): [`HandshakeLog`](/templates/protocols/javascript/modules/ssh.HandshakeLog)
+▸ **ConnectSSHInfoMode**(`ctx`, `host`, `port`): [`HandshakeLog`](/templates/protocols/javascript/modules/ssh.HandshakeLog)
 
 ConnectSSHInfoMode tries to connect to provided host and port
 with provided host and port
@@ -120,6 +121,7 @@ ssh connection
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 
@@ -144,7 +146,7 @@ ___
 
 ### ConnectWithKey
 
-▸ **ConnectWithKey**(`host`, `port`, `username`): `boolean`
+▸ **ConnectWithKey**(`ctx`, `host`, `port`, `username`): `boolean`
 
 ConnectWithKey tries to connect to provided host and port
 with provided username and private_key.
@@ -155,6 +157,7 @@ state will be false
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 | `username` | `string` |

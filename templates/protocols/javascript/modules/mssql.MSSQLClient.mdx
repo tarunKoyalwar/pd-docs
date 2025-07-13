@@ -43,7 +43,7 @@ mssql.ts:16
 
 ### Connect
 
-▸ **Connect**(`host`, `port`, `username`): `boolean`
+▸ **Connect**(`ctx`, `host`, `port`, `username`): `boolean`
 
 Connect connects to MS SQL database using given credentials.
 If connection is successful, it returns true.
@@ -54,6 +54,7 @@ The connection is closed after the function returns.
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 | `username` | `string` |
@@ -78,7 +79,7 @@ ___
 
 ### ConnectWithDB
 
-▸ **ConnectWithDB**(`host`, `port`, `username`): `boolean`
+▸ **ConnectWithDB**(`ctx`, `host`, `port`, `username`): `boolean`
 
 ConnectWithDB connects to MS SQL database using given credentials and database name.
 If connection is successful, it returns true.
@@ -89,6 +90,7 @@ The connection is closed after the function returns.
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 | `username` | `string` |
@@ -113,7 +115,7 @@ ___
 
 ### ExecuteQuery
 
-▸ **ExecuteQuery**(`host`, `port`, `username`): [`SQLResult`](/templates/protocols/javascript/modules/mssql.SQLResult)
+▸ **ExecuteQuery**(`ctx`, `host`, `port`, `username`): [`SQLResult`](/templates/protocols/javascript/modules/mssql.SQLResult)
 
 ExecuteQuery connects to MS SQL database using given credentials and executes a query.
 It returns the results of the query or an error if something goes wrong.
@@ -122,6 +124,7 @@ It returns the results of the query or an error if something goes wrong.
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 | `username` | `string` |
@@ -147,7 +150,7 @@ ___
 
 ### IsMssql
 
-▸ **IsMssql**(`host`, `port`): `boolean`
+▸ **IsMssql**(`ctx`, `host`, `port`): `boolean`
 
 IsMssql checks if the given host is running MS SQL database.
 If the host is running MS SQL database, it returns true.
@@ -157,6 +160,7 @@ If the host is not running MS SQL database, it returns false.
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 

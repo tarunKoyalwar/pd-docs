@@ -15,7 +15,7 @@
 
 ### Open
 
-▸ **Open**(`protocol`): [`NetConn`](/templates/protocols/javascript/modules/net.NetConn) \| ``null``
+▸ **Open**(`ctx`, `protocol`): [`NetConn`](/templates/protocols/javascript/modules/net.NetConn) \| ``null``
 
 Open opens a new connection to the address with a timeout.
 supported protocols: tcp, udp
@@ -24,6 +24,7 @@ supported protocols: tcp, udp
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `protocol` | `string` |
 
 #### Returns
@@ -45,7 +46,7 @@ ___
 
 ### OpenTLS
 
-▸ **OpenTLS**(`protocol`): [`NetConn`](/templates/protocols/javascript/modules/net.NetConn) \| ``null``
+▸ **OpenTLS**(`ctx`, `protocol`): [`NetConn`](/templates/protocols/javascript/modules/net.NetConn) \| ``null``
 
 Open opens a new connection to the address with a timeout.
 supported protocols: tcp, udp
@@ -54,6 +55,7 @@ supported protocols: tcp, udp
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `protocol` | `string` |
 
 #### Returns

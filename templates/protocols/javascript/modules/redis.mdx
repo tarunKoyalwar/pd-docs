@@ -14,7 +14,7 @@
 
 ### Connect
 
-▸ **Connect**(`host`, `port`, `password`): `boolean` \| ``null``
+▸ **Connect**(`ctx`, `host`, `port`, `password`): `boolean` \| ``null``
 
 Connect tries to connect redis server with password
 
@@ -22,6 +22,7 @@ Connect tries to connect redis server with password
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 | `password` | `string` |
@@ -45,7 +46,7 @@ ___
 
 ### GetServerInfo
 
-▸ **GetServerInfo**(`host`, `port`): `string` \| ``null``
+▸ **GetServerInfo**(`ctx`, `host`, `port`): `string` \| ``null``
 
 GetServerInfo returns the server info for a redis server
 
@@ -53,6 +54,7 @@ GetServerInfo returns the server info for a redis server
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 
@@ -75,7 +77,7 @@ ___
 
 ### GetServerInfoAuth
 
-▸ **GetServerInfoAuth**(`host`, `port`, `password`): `string` \| ``null``
+▸ **GetServerInfoAuth**(`ctx`, `host`, `port`, `password`): `string` \| ``null``
 
 GetServerInfoAuth returns the server info for a redis server
 
@@ -83,6 +85,7 @@ GetServerInfoAuth returns the server info for a redis server
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 | `password` | `string` |
@@ -106,7 +109,7 @@ ___
 
 ### IsAuthenticated
 
-▸ **IsAuthenticated**(`host`, `port`): `boolean` \| ``null``
+▸ **IsAuthenticated**(`ctx`, `host`, `port`): `boolean` \| ``null``
 
 IsAuthenticated checks if the redis server requires authentication
 
@@ -114,6 +117,7 @@ IsAuthenticated checks if the redis server requires authentication
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 
@@ -136,7 +140,7 @@ ___
 
 ### RunLuaScript
 
-▸ **RunLuaScript**(`host`, `port`, `password`, `script`): `any` \| ``null``
+▸ **RunLuaScript**(`ctx`, `host`, `port`, `password`, `script`): `any` \| ``null``
 
 RunLuaScript runs a lua script on the redis server
 
@@ -144,6 +148,7 @@ RunLuaScript runs a lua script on the redis server
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 | `password` | `string` |

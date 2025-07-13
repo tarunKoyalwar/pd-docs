@@ -46,7 +46,7 @@ mysql.ts:33
 
 ### Connect
 
-▸ **Connect**(`host`, `port`, `username`): `boolean`
+▸ **Connect**(`ctx`, `host`, `port`, `username`): `boolean`
 
 Connect connects to MySQL database using given credentials.
 If connection is successful, it returns true.
@@ -57,6 +57,7 @@ The connection is closed after the function returns.
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 | `username` | `string` |
@@ -113,7 +114,7 @@ ___
 
 ### ExecuteQuery
 
-▸ **ExecuteQuery**(`host`, `port`, `username`): [`SQLResult`](/templates/protocols/javascript/modules/mysql.SQLResult)
+▸ **ExecuteQuery**(`ctx`, `host`, `port`, `username`): [`SQLResult`](/templates/protocols/javascript/modules/mysql.SQLResult)
 
 ExecuteQuery connects to Mysql database using given credentials
 and executes a query on the db.
@@ -122,6 +123,7 @@ and executes a query on the db.
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 | `username` | `string` |
@@ -146,7 +148,7 @@ ___
 
 ### ExecuteQueryOnDB
 
-▸ **ExecuteQueryOnDB**(`host`, `port`, `username`): [`SQLResult`](/templates/protocols/javascript/modules/mysql.SQLResult)
+▸ **ExecuteQueryOnDB**(`ctx`, `host`, `port`, `username`): [`SQLResult`](/templates/protocols/javascript/modules/mysql.SQLResult)
 
 ExecuteQuery connects to Mysql database using given credentials
 and executes a query on the db.
@@ -155,6 +157,7 @@ and executes a query on the db.
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 | `username` | `string` |
@@ -179,7 +182,7 @@ ___
 
 ### ExecuteQueryWithOpts
 
-▸ **ExecuteQueryWithOpts**(`opts`, `query`): [`SQLResult`](/templates/protocols/javascript/modules/mysql.SQLResult)
+▸ **ExecuteQueryWithOpts**(`ctx`, `opts`, `query`): [`SQLResult`](/templates/protocols/javascript/modules/mysql.SQLResult)
 
 ExecuteQueryWithOpts connects to Mysql database using given credentials
 and executes a query on the db.
@@ -188,6 +191,7 @@ and executes a query on the db.
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `opts` | [`MySQLOptions`](/templates/protocols/javascript/modules/mysql.MySQLOptions) |
 | `query` | `string` |
 
@@ -214,7 +218,7 @@ ___
 
 ### FingerprintMySQL
 
-▸ **FingerprintMySQL**(`host`, `port`): [`MySQLInfo`](/templates/protocols/javascript/modules/mysql.MySQLInfo)
+▸ **FingerprintMySQL**(`ctx`, `host`, `port`): [`MySQLInfo`](/templates/protocols/javascript/modules/mysql.MySQLInfo)
 
 returns MySQLInfo when fingerpint is successful
 
@@ -222,6 +226,7 @@ returns MySQLInfo when fingerpint is successful
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 
@@ -245,7 +250,7 @@ ___
 
 ### IsMySQL
 
-▸ **IsMySQL**(`host`, `port`): `boolean`
+▸ **IsMySQL**(`ctx`, `host`, `port`): `boolean`
 
 IsMySQL checks if the given host is running MySQL database.
 If the host is running MySQL database, it returns true.
@@ -255,6 +260,7 @@ If the host is not running MySQL database, it returns false.
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 

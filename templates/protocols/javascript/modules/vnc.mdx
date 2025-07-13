@@ -14,7 +14,7 @@
 
 ### IsVNC
 
-▸ **IsVNC**(`host`, `port`): [`IsVNCResponse`](/templates/protocols/javascript/modules/vnc.IsVNCResponse) \| ``null``
+▸ **IsVNC**(`ctx`, `host`, `port`): [`IsVNCResponse`](/templates/protocols/javascript/modules/vnc.IsVNCResponse) \| ``null``
 
 IsVNC checks if a host is running a VNC server.
 It returns a boolean indicating if the host is running a VNC server
@@ -24,6 +24,7 @@ and the banner of the VNC server.
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 
