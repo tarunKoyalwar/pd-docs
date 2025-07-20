@@ -13,7 +13,7 @@
 
 ### ListDir
 
-▸ **ListDir**(`path`, `itemType`): `string`[] \| ``null``
+▸ **ListDir**(`ctx`, `path`, `itemType`): `string`[] \| ``null``
 
 ListDir lists itemType values within a directory
 depending on the itemType provided
@@ -23,6 +23,7 @@ itemType can be any one of ['file','dir',”]
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `path` | `string` |
 | `itemType` | `string` |
 
@@ -62,7 +63,7 @@ ___
 
 ### ReadFile
 
-▸ **ReadFile**(`path`): `Uint8Array` \| ``null``
+▸ **ReadFile**(`ctx`, `path`): `Uint8Array` \| ``null``
 
 ReadFile reads file contents within permitted paths
 and returns content as byte array
@@ -71,6 +72,7 @@ and returns content as byte array
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `path` | `string` |
 
 #### Returns
@@ -93,7 +95,7 @@ ___
 
 ### ReadFileAsString
 
-▸ **ReadFileAsString**(`path`): `string` \| ``null``
+▸ **ReadFileAsString**(`ctx`, `path`): `string` \| ``null``
 
 ReadFileAsString reads file contents within permitted paths
 and returns content as string
@@ -102,6 +104,7 @@ and returns content as string
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `path` | `string` |
 
 #### Returns
@@ -124,7 +127,7 @@ ___
 
 ### ReadFilesFromDir
 
-▸ **ReadFilesFromDir**(`dir`): `string`[] \| ``null``
+▸ **ReadFilesFromDir**(`ctx`, `dir`): `string`[] \| ``null``
 
 ReadFilesFromDir reads all files from a directory
 and returns a string array with file contents of all files
@@ -133,6 +136,7 @@ and returns a string array with file contents of all files
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `dir` | `string` |
 
 #### Returns
