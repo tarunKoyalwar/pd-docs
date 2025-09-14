@@ -2,13 +2,14 @@
 
 [oracle](/templates/protocols/javascript/modules/oracle).OracleClient
 
-OracleClient is a minimal Oracle client for nuclei scripts.
+Client is a client for Oracle database.
+Internally client uses go-ora driver.
 
 **`Example`**
 
 ```javascript
 const oracle = require('nuclei/oracle');
-const client = new oracle.Client();
+const client = new oracle.OracleClient();
 ```
 
 ## Table of contents
@@ -19,6 +20,10 @@ const client = new oracle.Client();
 
 ### Methods
 
+- [Connect](/templates/protocols/javascript/modules/oracle.OracleClient#connect)
+- [ConnectWithDSN](/templates/protocols/javascript/modules/oracle.OracleClient#connectwithdsn)
+- [ExecuteQuery](/templates/protocols/javascript/modules/oracle.OracleClient#executequery)
+- [ExecuteQueryWithDSN](/templates/protocols/javascript/modules/oracle.OracleClient#executequerywithdsn)
 - [IsOracle](/templates/protocols/javascript/modules/oracle.OracleClient#isoracle)
 
 ## Constructors
@@ -33,9 +38,142 @@ const client = new oracle.Client();
 
 #### Defined in
 
-oracle.ts:15
+oracle.ts:29
 
 ## Methods
+
+### Connect
+
+▸ **Connect**(`host`, `port`, `serviceName`, `username`, `password`): `boolean`
+
+Connect connects to an Oracle database
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `host` | `string` |
+| `port` | `number` |
+| `serviceName` | `string` |
+| `username` | `string` |
+| `password` | `string` |
+
+#### Returns
+
+`boolean`
+
+**`Example`**
+
+```javascript
+const oracle = require('nuclei/oracle');
+const client = new oracle.OracleClient();
+client.Connect('acme.com', 1521, 'XE', 'user', 'password');
+```
+
+#### Defined in
+
+oracle.ts:40
+
+___
+
+### ConnectWithDSN
+
+▸ **ConnectWithDSN**(`dsn`): `boolean`
+
+ConnectWithDSN connects to an Oracle database using a DSN string
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `dsn` | `string` |
+
+#### Returns
+
+`boolean`
+
+**`Example`**
+
+```javascript
+const oracle = require('nuclei/oracle');
+const client = new oracle.OracleClient();
+client.ConnectWithDSN('oracle://user:password@host:port/service', 'SELECT @@version');
+```
+
+#### Defined in
+
+oracle.ts:53
+
+___
+
+### ExecuteQuery
+
+▸ **ExecuteQuery**(`host`, `port`, `username`, `password`, `dbName`, `query`): [`SQLResult`](/templates/protocols/javascript/modules/oracle.SQLResult)
+
+ExecuteQuery connects to Oracle database using given credentials and executes a query.
+It returns the results of the query or an error if something goes wrong.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `host` | `string` |
+| `port` | `number` |
+| `username` | `string` |
+| `password` | `string` |
+| `dbName` | `string` |
+| `query` | `string` |
+
+#### Returns
+
+[`SQLResult`](/templates/protocols/javascript/modules/oracle.SQLResult)
+
+**`Example`**
+
+```javascript
+const oracle = require('nuclei/oracle');
+const client = new oracle.OracleClient();
+const result = client.ExecuteQuery('acme.com', 1521, 'username', 'password', 'XE', 'SELECT * FROM dual');
+log(to_json(result));
+```
+
+#### Defined in
+
+oracle.ts:80
+
+___
+
+### ExecuteQueryWithDSN
+
+▸ **ExecuteQueryWithDSN**(`dsn`, `query`): [`SQLResult`](/templates/protocols/javascript/modules/oracle.SQLResult)
+
+ExecuteQueryWithDSN executes a query on an Oracle database using a DSN
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `dsn` | `string` |
+| `query` | `string` |
+
+#### Returns
+
+[`SQLResult`](/templates/protocols/javascript/modules/oracle.SQLResult)
+
+**`Example`**
+
+```javascript
+const oracle = require('nuclei/oracle');
+const client = new oracle.OracleClient();
+const result = client.ExecuteQueryWithDSN('oracle://user:password@host:port/service', 'SELECT * FROM dual');
+log(to_json(result));
+```
+
+#### Defined in
+
+oracle.ts:94
+
+___
 
 ### IsOracle
 
@@ -59,9 +197,8 @@ IsOracle checks if a host is running an Oracle server
 ```javascript
 const oracle = require('nuclei/oracle');
 const isOracle = oracle.IsOracle('acme.com', 1521);
-log(toJSON(isOracle));
 ```
 
 #### Defined in
 
-oracle.ts:25
+oracle.ts:65

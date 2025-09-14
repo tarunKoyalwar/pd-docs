@@ -9,7 +9,8 @@ this is returned by IsOracle function.
 
 ```javascript
 const oracle = require('nuclei/oracle');
-const isOracle = oracle.IsOracle('acme.com', 1521);
+const client = new oracle.OracleClient();
+const isOracle = client.IsOracle('acme.com', 1521);
 ```
 
 ## Table of contents
@@ -27,7 +28,7 @@ const isOracle = oracle.IsOracle('acme.com', 1521);
 
 #### Defined in
 
-oracle.ts:31
+oracle.ts:15
 
 ___
 
@@ -37,4 +38,4 @@ ___
 
 #### Defined in
 
-oracle.ts:29
+oracle.ts:14

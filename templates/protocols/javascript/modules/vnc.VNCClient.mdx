@@ -2,13 +2,13 @@
 
 [vnc](/templates/protocols/javascript/modules/vnc).VNCClient
 
-VNCClient is a minimal VNC client for nuclei scripts.
+VNCClient is a client for VNC servers.
 
 **`Example`**
 
 ```javascript
 const vnc = require('nuclei/vnc');
-const client = new vnc.Client();
+const client = new vnc.VNCClient();
 ```
 
 ## Table of contents
@@ -19,7 +19,7 @@ const client = new vnc.Client();
 
 ### Methods
 
-- [IsVNC](/templates/protocols/javascript/modules/vnc.VNCClient#isvnc)
+- [Connect](/templates/protocols/javascript/modules/vnc.VNCClient#connect)
 
 ## Constructors
 
@@ -33,17 +33,18 @@ const client = new vnc.Client();
 
 #### Defined in
 
-vnc.ts:15
+vnc.ts:48
 
 ## Methods
 
-### IsVNC
+### Connect
 
-▸ **IsVNC**(`host`, `port`): [`IsVNCResponse`](/templates/protocols/javascript/modules/vnc.IsVNCResponse)
+▸ **Connect**(`host`, `port`, `password`): `boolean`
 
-IsVNC checks if a host is running a VNC server.
-It returns a boolean indicating if the host is running a VNC server
-and the banner of the VNC server.
+Connect connects to VNC server using given password.
+If connection and authentication is successful, it returns true.
+If connection or authentication is unsuccessful, it returns false and error.
+The connection is closed after the function returns.
 
 #### Parameters
 
@@ -51,19 +52,20 @@ and the banner of the VNC server.
 | :------ | :------ |
 | `host` | `string` |
 | `port` | `number` |
+| `password` | `string` |
 
 #### Returns
 
-[`IsVNCResponse`](/templates/protocols/javascript/modules/vnc.IsVNCResponse)
+`boolean`
 
 **`Example`**
 
 ```javascript
 const vnc = require('nuclei/vnc');
-const isVNC = vnc.IsVNC('acme.com', 5900);
-log(toJSON(isVNC));
+const client = new vnc.VNCClient();
+const connected = client.Connect('acme.com', 5900, 'password');
 ```
 
 #### Defined in
 
-vnc.ts:27
+vnc.ts:62

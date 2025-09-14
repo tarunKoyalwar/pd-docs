@@ -43,7 +43,7 @@ postgres.ts:16
 
 ### Connect
 
-▸ **Connect**(`ctx`, `host`, `port`, `username`): `boolean`
+▸ **Connect**(`host`, `port`, `username`): `boolean`
 
 Connect connects to Postgres database using given credentials.
 If connection is successful, it returns true.
@@ -54,7 +54,6 @@ The connection is closed after the function returns.
 
 | Name | Type |
 | :------ | :------ |
-| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 | `username` | `string` |
@@ -79,7 +78,7 @@ ___
 
 ### ConnectWithDB
 
-▸ **ConnectWithDB**(`ctx`, `host`, `port`, `username`): `boolean`
+▸ **ConnectWithDB**(`host`, `port`, `username`): `boolean`
 
 ConnectWithDB connects to Postgres database using given credentials and database name.
 If connection is successful, it returns true.
@@ -90,7 +89,6 @@ The connection is closed after the function returns.
 
 | Name | Type |
 | :------ | :------ |
-| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 | `username` | `string` |
@@ -115,7 +113,7 @@ ___
 
 ### ExecuteQuery
 
-▸ **ExecuteQuery**(`ctx`, `host`, `port`, `username`): [`SQLResult`](/templates/protocols/javascript/modules/postgres.SQLResult)
+▸ **ExecuteQuery**(`host`, `port`, `username`): [`SQLResult`](/templates/protocols/javascript/modules/postgres.SQLResult)
 
 ExecuteQuery connects to Postgres database using given credentials and database name.
 and executes a query on the db.
@@ -125,7 +123,6 @@ If connection is successful, it returns the result of the query.
 
 | Name | Type |
 | :------ | :------ |
-| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 | `username` | `string` |
@@ -151,7 +148,7 @@ ___
 
 ### IsPostgres
 
-▸ **IsPostgres**(`ctx`, `host`, `port`): `boolean`
+▸ **IsPostgres**(`host`, `port`): `boolean`
 
 IsPostgres checks if the given host and port are running Postgres database.
 If connection is successful, it returns true.
@@ -161,7 +158,6 @@ If connection is unsuccessful, it returns false and error.
 
 | Name | Type |
 | :------ | :------ |
-| `ctx` | `any` |
 | `host` | `string` |
 | `port` | `number` |
 
