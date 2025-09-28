@@ -6,11 +6,13 @@
 
 - [CheckRDPAuthResponse](/templates/protocols/javascript/modules/rdp.CheckRDPAuthResponse)
 - [IsRDPResponse](/templates/protocols/javascript/modules/rdp.IsRDPResponse)
+- [RDPEncryptionResponse](/templates/protocols/javascript/modules/rdp.RDPEncryptionResponse)
 - [ServiceRDP](/templates/protocols/javascript/modules/rdp.ServiceRDP)
 
 ### Functions
 
 - [CheckRDPAuth](/templates/protocols/javascript/modules/rdp#checkrdpauth)
+- [CheckRDPEncryption](/templates/protocols/javascript/modules/rdp#checkrdpencryption)
 - [IsRDP](/templates/protocols/javascript/modules/rdp#isrdp)
 
 ## Functions
@@ -44,7 +46,39 @@ log(toJSON(checkRDPAuth));
 
 #### Defined in
 
-rdp.ts:14
+rdp.ts:12
+
+___
+
+### CheckRDPEncryption
+
+▸ **CheckRDPEncryption**(`host`, `port`): [`RDPEncryptionResponse`](/templates/protocols/javascript/modules/rdp.RDPEncryptionResponse) \| ``null``
+
+CheckRDPEncryption checks the RDP server's supported security layers and encryption levels.
+It tests different protocols and ciphers to determine what is supported.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `host` | `string` |
+| `port` | `number` |
+
+#### Returns
+
+[`RDPEncryptionResponse`](/templates/protocols/javascript/modules/rdp.RDPEncryptionResponse) \| ``null``
+
+**`Example`**
+
+```javascript
+const rdp = require('nuclei/rdp');
+const encryption = rdp.CheckRDPEncryption('acme.com', 3389);
+log(toJSON(encryption));
+```
+
+#### Defined in
+
+rdp.ts:26
 
 ___
 
@@ -78,4 +112,4 @@ log(toJSON(isRDP));
 
 #### Defined in
 
-rdp.ts:32
+rdp.ts:42
