@@ -2,13 +2,13 @@
 
 [telnet](/templates/protocols/javascript/modules/telnet).TelnetClient
 
-TelnetClient is a minimal Telnet client for nuclei scripts.
+TelnetClient is a client for Telnet servers.
 
 **`Example`**
 
 ```javascript
 const telnet = require('nuclei/telnet');
-const client = new telnet.Client();
+const client = new telnet.TelnetClient();
 ```
 
 ## Table of contents
@@ -19,7 +19,9 @@ const client = new telnet.Client();
 
 ### Methods
 
-- [IsTelnet](/templates/protocols/javascript/modules/telnet.TelnetClient#istelnet)
+- [Connect](/templates/protocols/javascript/modules/telnet.TelnetClient#connect)
+- [GetTelnetNTLMInfo](/templates/protocols/javascript/modules/telnet.TelnetClient#gettelnetntlminfo)
+- [Info](/templates/protocols/javascript/modules/telnet.TelnetClient#info)
 
 ## Constructors
 
@@ -31,17 +33,52 @@ const client = new telnet.Client();
 
 [`TelnetClient`](/templates/protocols/javascript/modules/telnet.TelnetClient)
 
-#### Defined in
-
-telnet.ts:15
-
 ## Methods
 
-### IsTelnet
+### Connect
 
-▸ **IsTelnet**(`host`, `port`): [`IsTelnetResponse`](/templates/protocols/javascript/modules/telnet.IsTelnetResponse)
+▸ **Connect**(`host`, `port`, `username`, `password`): `boolean`
 
-IsTelnet checks if a host is running a Telnet server.
+Connect tries to connect to provided host and port with telnet.
+Optionally provides username and password for authentication.
+Returns state of connection. If the connection is successful,
+the function will return true, otherwise false.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `host` | `string` |
+| `port` | `number` |
+| `username` | `string` |
+| `password` | `string` |
+
+#### Returns
+
+`boolean`
+
+**`Example`**
+
+```javascript
+const telnet = require('nuclei/telnet');
+const client = new telnet.TelnetClient();
+const connected = client.Connect('acme.com', 23, 'username', 'password');
+```
+
+#### Defined in
+
+telnet.ts:38
+
+___
+
+### GetTelnetNTLMInfo
+
+▸ **GetTelnetNTLMInfo**(`host`, `port`): [`NTLMInfoResponse`](/templates/protocols/javascript/modules/telnet.NTLMInfoResponse)
+
+GetTelnetNTLMInfo implements the Nmap telnet-ntlm-info.nse script functionality.
+This function uses the telnetmini library and SMB packet crafting functions to send
+MS-TNAP NTLM authentication requests with null credentials. It might work only on
+Microsoft Telnet servers.
 
 #### Parameters
 
@@ -52,16 +89,51 @@ IsTelnet checks if a host is running a Telnet server.
 
 #### Returns
 
-[`IsTelnetResponse`](/templates/protocols/javascript/modules/telnet.IsTelnetResponse)
+[`NTLMInfoResponse`](/templates/protocols/javascript/modules/telnet.NTLMInfoResponse)
 
 **`Example`**
 
 ```javascript
 const telnet = require('nuclei/telnet');
-const isTelnet = telnet.IsTelnet('acme.com', 23);
-log(toJSON(isTelnet));
+const client = new telnet.TelnetClient();
+const ntlmInfo = client.GetTelnetNTLMInfo('acme.com', 23);
+log(toJSON(ntlmInfo));
 ```
 
 #### Defined in
 
-telnet.ts:25
+telnet.ts:71
+
+___
+
+### Info
+
+▸ **Info**(`host`, `port`): [`TelnetInfoResponse`](/templates/protocols/javascript/modules/telnet.TelnetInfoResponse)
+
+Info gathers information about the telnet server including encryption support.
+Uses the telnetmini library's DetectEncryption helper function.
+WARNING: The connection used for detection becomes unusable after this call.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `host` | `string` |
+| `port` | `number` |
+
+#### Returns
+
+[`TelnetInfoResponse`](/templates/protocols/javascript/modules/telnet.TelnetInfoResponse)
+
+**`Example`**
+
+```javascript
+const telnet = require('nuclei/telnet');
+const client = new telnet.TelnetClient();
+const info = client.Info('acme.com', 23);
+log(toJSON(info));
+```
+
+#### Defined in
+
+telnet.ts:54

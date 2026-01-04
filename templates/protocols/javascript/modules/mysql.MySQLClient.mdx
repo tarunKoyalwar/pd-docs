@@ -82,7 +82,7 @@ ___
 
 ### ConnectWithDSN
 
-▸ **ConnectWithDSN**(`dsn`): `boolean`
+▸ **ConnectWithDSN**(`ctx`, `dsn`): `boolean`
 
 ConnectWithDSN connects to MySQL database using given DSN.
 we override mysql dialer with fastdialer so it respects network policy
@@ -92,6 +92,7 @@ If connection is successful, it returns true.
 
 | Name | Type |
 | :------ | :------ |
+| `ctx` | `any` |
 | `dsn` | `string` |
 
 #### Returns

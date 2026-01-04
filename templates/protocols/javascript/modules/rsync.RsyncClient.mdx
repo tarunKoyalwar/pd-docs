@@ -2,13 +2,14 @@
 
 [rsync](/templates/protocols/javascript/modules/rsync).RsyncClient
 
-RsyncClient is a minimal Rsync client for nuclei scripts.
+RsyncClient is a client for RSYNC servers.
+Internally client uses https://github.com/gokrazy/rsync driver.
 
 **`Example`**
 
 ```javascript
 const rsync = require('nuclei/rsync');
-const client = new rsync.Client();
+const client = new rsync.RsyncClient();
 ```
 
 ## Table of contents
@@ -19,7 +20,9 @@ const client = new rsync.Client();
 
 ### Methods
 
-- [IsRsync](/templates/protocols/javascript/modules/rsync.RsyncClient#isrsync)
+- [Connect](/templates/protocols/javascript/modules/rsync.RsyncClient#connect)
+- [ListFilesInModule](/templates/protocols/javascript/modules/rsync.RsyncClient#listfilesinmodule)
+- [ListModules](/templates/protocols/javascript/modules/rsync.RsyncClient#listmodules)
 
 ## Constructors
 
@@ -33,15 +36,15 @@ const client = new rsync.Client();
 
 #### Defined in
 
-rsync.ts:15
+rsync.ts:28
 
 ## Methods
 
-### IsRsync
+### Connect
 
-▸ **IsRsync**(`host`, `port`): [`IsRsyncResponse`](/templates/protocols/javascript/modules/rsync.IsRsyncResponse)
+▸ **Connect**(`host`, `port`, `username`, `password`, `module`): `boolean`
 
-IsRsync checks if a host is running a Rsync server.
+Connect establishes a connection to the rsync server with authentication.
 
 #### Parameters
 
@@ -49,19 +52,91 @@ IsRsync checks if a host is running a Rsync server.
 | :------ | :------ |
 | `host` | `string` |
 | `port` | `number` |
+| `username` | `string` |
+| `password` | `string` |
+| `module` | `string` |
 
 #### Returns
 
-[`IsRsyncResponse`](/templates/protocols/javascript/modules/rsync.IsRsyncResponse)
+`boolean`
 
 **`Example`**
 
 ```javascript
 const rsync = require('nuclei/rsync');
-const isRsync = rsync.IsRsync('acme.com', 873);
-log(toJSON(isRsync));
+const client = new rsync.RsyncClient();
+const connected = client.Connect('acme.com', 873, 'username', 'password', 'backup');
 ```
 
 #### Defined in
 
-rsync.ts:25
+rsync.ts:39
+
+___
+
+### ListFilesInModule
+
+▸ **ListFilesInModule**(`host`, `port`, `username`, `password`, `module`): `string`[]
+
+ListFilesInModule lists files in a specific module on the rsync server.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `host` | `string` |
+| `port` | `number` |
+| `username` | `string` |
+| `password` | `string` |
+| `module` | `string` |
+
+#### Returns
+
+`string`[]
+
+**`Example`**
+
+```javascript
+const rsync = require('nuclei/rsync');
+const client = new rsync.RsyncClient();
+const files = client.ListFilesInModule('acme.com', 873, 'username', 'password', 'backup');
+log(toJSON(files));
+```
+
+#### Defined in
+
+rsync.ts:67
+
+___
+
+### ListModules
+
+▸ **ListModules**(`host`, `port`, `username`, `password`): `string`[]
+
+ListModules lists available modules on the rsync server.
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `host` | `string` |
+| `port` | `number` |
+| `username` | `string` |
+| `password` | `string` |
+
+#### Returns
+
+`string`[]
+
+**`Example`**
+
+```javascript
+const rsync = require('nuclei/rsync');
+const client = new rsync.RsyncClient();
+const modules = client.ListModules('acme.com', 873, 'username', 'password');
+log(toJSON(modules));
+```
+
+#### Defined in
+
+rsync.ts:53
